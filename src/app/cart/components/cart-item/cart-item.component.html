@@ -1,0 +1,26 @@
+<mat-card class="cart-item-card">
+  <img [src]="product.imageUrl" class="item-image" />
+  <div class="item-text">
+    <p class="mat-title">{{ product.name }}</p>
+    <p class="mat-subheading-1">{{ product.price + "₴" }}</p>
+  </div>
+  <div class="item-count">
+    <p class="mat-subheading-2">{{ count }}</p>
+    <div class="item-count-controls">
+      <button mat-mini-fab color="primary" (click)="onAddProduct()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" [disabled]="count < 2" (click)="onRemoveProduct()">
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="item-total">
+    <p class="mat-subheading-2">{{ count * product.price | currency }}</p>
+  </div>
+  <div class="item-delete">
+    <button mat-icon-button (click)="onDeleteProduct()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</mat-card>
