@@ -5,19 +5,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { HighlightDirective } from './directives/highlight.directive';
 
-
+const directives = [HighlightDirective];
 
 const modules = [
   MatCardModule,
   MatButtonModule,
   MatDividerModule,
   MatListModule,
-  MatIconModule
+  MatIconModule,
 ];
 
 @NgModule({
   imports: [...modules],
-  exports: [...modules]
+  exports: [
+    ...modules, 
+    ...directives
+  ],
+  declarations: [...directives],
 })
-export class SharedModule { }
+export class SharedModule {}
