@@ -16,3 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New component CartListComponent component.
 - New component CartItemComponent.
 - New service CartService.
+
+## [0.1.1] - 2022-03-24
+### Added
+- New directive HighlightDirective
+- Dynamic app title
