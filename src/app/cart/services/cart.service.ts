@@ -27,11 +27,14 @@ export class CartService {
 
   removeProduct(product: ProductModel) {
     if(!this.cart[product.id]) return;
-    if(this.cart[product.id].count > 1) {
-      this.cart[product.id].count--;
-    } else {
-      delete this.cart[product.id];
-    }
+    if(this.cart[product.id].count < 2) return;
+    this.cart[product.id].count--;
+    this.channel.next(this.getCartProducts());
+  }
+
+  deleteProduct(product: ProductModel) {
+    if(!this.cart[product.id]) return;
+    delete this.cart[product.id];
     this.channel.next(this.getCartProducts());
   }
 

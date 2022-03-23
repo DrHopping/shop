@@ -1,7 +1,12 @@
 <div class="cart-container">
   <ng-container *ngFor="let item of items$ | async">
     <div class="cart-item">
-      <app-cart-item [cartItem]="item"></app-cart-item>
+      <app-cart-item
+        [cartItem]="item"
+        (addProduct)="onAddProduct($event)"
+        (removeProduct)="onRemoveProduct($event)"
+        (deleteProduct)="onDeleteProduct($event)"
+      ></app-cart-item>
     </div>
   </ng-container>
 </div>
