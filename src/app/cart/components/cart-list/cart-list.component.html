@@ -15,5 +15,9 @@
         ></app-cart-item>
       </div>
     </ng-container>
+    <div class="cart-footer">
+      <p class="mat-title">Total quantity: {{ cartService.totalQuantity$ | async }}</p>
+      <p class="mat-title">Total cost: {{ cartService.totalCost$ | async | currency }}</p>
+    </div>
   </ng-template>
 </div>
