@@ -7,10 +7,10 @@
   <div class="item-count">
     <p class="mat-subheading-2">{{ count }}</p>
     <div class="item-count-controls">
-      <button mat-mini-fab color="primary" (click)="onAddProduct()">
+      <button mat-mini-fab color="primary" (click)="onQuantityIncrease()">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-mini-fab color="primary" [disabled]="count < 2" (click)="onRemoveProduct()">
+      <button mat-mini-fab color="primary" [disabled]="count < 2" (click)="onQuantityDecrease()">
         <mat-icon>remove</mat-icon>
       </button>
     </div>
@@ -19,7 +19,7 @@
     <p class="mat-subheading-2">{{ count * product.price | currency }}</p>
   </div>
   <div class="item-delete">
-    <button mat-icon-button (click)="onDeleteProduct()">
+    <button mat-icon-button (click)="onDeleteItem()">
       <mat-icon>clear</mat-icon>
     </button>
   </div>

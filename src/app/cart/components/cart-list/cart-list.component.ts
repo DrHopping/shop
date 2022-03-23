@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+
 import { ProductModel } from 'src/app/products/models/product.model';
 import { CartProductModel } from '../../models/cart.model';
 import { CartService } from '../../services/cart.service';
@@ -10,14 +10,10 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit {
-  public items$! : Observable<CartProductModel[]>;
 
+  constructor(public cartService: CartService) {}
 
-  constructor(private cartService: CartService) { }
-
-  ngOnInit(): void {
-    this.items$ = this.cartService.channel$;
-  }
+  ngOnInit(): void {}
 
   onAddProduct(product: ProductModel) {
     this.cartService.addProduct(product);
@@ -30,4 +26,9 @@ export class CartListComponent implements OnInit {
   onDeleteProduct(product: ProductModel) {
     this.cartService.deleteProduct(product);
   }
+
+  trackByProduct(index: number, cartProduct: CartProductModel): number {
+    return cartProduct.product.id;
+  }
+  
 }

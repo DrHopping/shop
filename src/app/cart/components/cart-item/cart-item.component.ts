@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { ProductModel } from 'src/app/products/models/product.model';
 import { CartProductModel } from '../../models/cart.model';
 
@@ -9,13 +10,25 @@ import { CartProductModel } from '../../models/cart.model';
 })
 export class CartItemComponent implements OnInit {
   @Input() cartItem!: CartProductModel; 
-  @Output() addProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
-  @Output() removeProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
-  @Output() deleteProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+  
+  @Output() quantityIncrease: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+  @Output() quantityDecrease: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+  @Output() deleteItem: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onQuantityIncrease() {
+    this.quantityIncrease.emit(this.product);
+  }
+
+  onQuantityDecrease() {
+    this.quantityDecrease.emit(this.product);
+  }
+
+  onDeleteItem() {
+    this.deleteItem.emit(this.product);
   }
   
   get product() : ProductModel {
@@ -24,17 +37,5 @@ export class CartItemComponent implements OnInit {
   
   get count() : number {
     return this.cartItem.count;
-  }
-  
-  onAddProduct() {
-    this.addProduct.emit(this.product);
-  }
-
-  onRemoveProduct() {
-    this.removeProduct.emit(this.product);
-  }
-
-  onDeleteProduct() {
-    this.deleteProduct.emit(this.product);
   }
 }

@@ -1,12 +1,19 @@
 <div class="cart-container">
-  <ng-container *ngFor="let item of items$ | async">
-    <div class="cart-item">
-      <app-cart-item
-        [cartItem]="item"
-        (addProduct)="onAddProduct($event)"
-        (removeProduct)="onRemoveProduct($event)"
-        (deleteProduct)="onDeleteProduct($event)"
-      ></app-cart-item>
-    </div>
-  </ng-container>
+  <div *ngIf="cartService.isEmpty$ | async; else elseBlock">
+    <p>
+      Shopping Cart is empty
+    </p>
+  </div>
+  <ng-template #elseBlock>
+    <ng-container *ngFor="let item of cartService.cartProducts$ | async; trackBy: trackByProduct">
+      <div class="cart-item">
+        <app-cart-item
+          [cartItem]="item"
+          (quantityIncrease)="onAddProduct($event)"
+          (quantityDecrease)="onRemoveProduct($event)"
+          (deleteItem)="onDeleteProduct($event)"
+        ></app-cart-item>
+      </div>
+    </ng-container>
+  </ng-template>
 </div>

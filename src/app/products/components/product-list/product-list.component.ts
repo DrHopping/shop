@@ -9,15 +9,10 @@ import { ProductComponent } from '../product/product.component';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit {
   products!: ProductModel[];
-  @ViewChild(ProductComponent) product!: ProductComponent;
 
   constructor(private productService: ProductsService, private cartService: CartService) { }
-
-  ngAfterViewInit(): void {
-    this.product.onBuyButtonClick();
-  }
 
   ngOnInit(): void {
     this.products = this.productService.getProducts();
