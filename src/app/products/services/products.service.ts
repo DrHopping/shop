@@ -52,7 +52,7 @@ export class ProductsService {
         description: 'Chinese budget smartphone 4/128GB' ,
         price: 4199.90,
         category: ProductCategory.Electronics,
-        isAvailable: true,
+        isAvailable: false,
         imageUrl: 'https://hotline.ua/img/tx/197/1972182965.jpg'
       }
     ];

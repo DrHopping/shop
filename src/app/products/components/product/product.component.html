@@ -8,6 +8,13 @@
     <p>{{ product.description }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="onBuyButtonClick()" >Buy</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!product.isAvailable"
+      (click)="onBuyButtonClick()"
+    >
+      Buy
+    </button>
   </mat-card-actions>
 </mat-card>
