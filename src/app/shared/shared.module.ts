@@ -18,9 +18,10 @@ const modules = [
 ];
 
 @NgModule({
-  imports: [...modules],
+  // Если эти модули не нужны компонентам текущего модуля, то их сюда можно не импортировать
+  // imports: [...modules],
   exports: [
-    ...modules, 
+    ...modules,
     ...directives
   ],
   declarations: [...directives],
