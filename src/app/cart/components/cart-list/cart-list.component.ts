@@ -16,11 +16,11 @@ export class CartListComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddProduct(product: ProductModel) {
-    this.cartService.addProduct(product);
+    this.cartService.increaseQuantity(product);
   }
 
   onRemoveProduct(product: ProductModel) {
-    this.cartService.removeProduct(product);
+    this.cartService.decreaseQuantity(product);
   }
 
   onDeleteProduct(product: ProductModel) {
