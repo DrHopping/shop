@@ -7,20 +7,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './products/products.module';
 import { CartModule } from './cart/cart.module';
+import {
+  APP_CONSTANTS,
+  APP_CONSTANTS_TOKEN,
+} from './core/services/constant.service';
+import { GENERATED_STRING, GeneratorFactory } from './core/services/generator.factory';
+import { GeneratorService } from './core/services/generator.service';
+import { LocalStorageService, LocalStorageServiceToken } from './core/services/local-storage.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ProductsModule,
     CartModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: APP_CONSTANTS_TOKEN, useValue: APP_CONSTANTS },
+    { provide: GENERATED_STRING, useFactory: GeneratorFactory, deps: [GeneratorService] },
+    { provide: LocalStorageServiceToken, useValue: new LocalStorageService(window.localStorage)}
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

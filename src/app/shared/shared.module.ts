@@ -6,8 +6,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { HighlightDirective } from './directives/highlight.directive';
+import { BorderDirective } from './directives/border.directive';
 
-const directives = [HighlightDirective];
+const directives = [HighlightDirective, BorderDirective];
 
 const modules = [
   MatCardModule,
@@ -19,10 +20,7 @@ const modules = [
 
 @NgModule({
   imports: [...modules],
-  exports: [
-    ...modules, 
-    ...directives
-  ],
+  exports: [...modules, ...directives],
   declarations: [...directives],
 })
 export class SharedModule {}
