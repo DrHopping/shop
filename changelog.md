@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.0] - 2022-03-23
+## [0.1.1] - 2022-03-23
 ### Added
 - New product module
 - New component ProductListComponent component.
@@ -17,7 +17,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New component CartItemComponent.
 - New service CartService.
 
-## [0.1.1] - 2022-03-24
+## [0.1.2] - 2022-03-24
 ### Added
 - New directive HighlightDirective
 - Dynamic app title
+
+## [0.1.3] - 2022-04-10
+### Added
+- New ConfigOptionsService
+- New ConstantsService
+- New GeneratorService
+- New LocalStorageService
+- New BorderDirective used in app.component.html
+
+## [0.1.4] - 2022-04-11
+### Added
+- Sorting for product list
+- New OrderByPipe used in product-list component
+### Changed
+- Used currency pipe to format product price
+- Used uppercase pipe to format product name
+- getProuduct method returns Observable
+
