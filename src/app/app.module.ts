@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +28,8 @@ import { LocalStorageService, LocalStorageServiceToken } from './core/services/l
   providers: [
     { provide: APP_CONSTANTS_TOKEN, useValue: APP_CONSTANTS },
     { provide: GENERATED_STRING, useFactory: GeneratorFactory, deps: [GeneratorService] },
-    { provide: LocalStorageServiceToken, useValue: new LocalStorageService(window.localStorage)}
+    { provide: LocalStorageServiceToken, useValue: new LocalStorageService(window.localStorage)},
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'USD'}
   ],
   bootstrap: [AppComponent],
 })

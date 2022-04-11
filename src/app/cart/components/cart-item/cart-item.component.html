@@ -1,8 +1,8 @@
 <mat-card class="cart-item-card">
   <img [src]="product.imageUrl" class="item-image" />
   <div class="item-text">
-    <p class="mat-title">{{ product.name }}</p>
-    <p class="mat-subheading-1">{{ product.price + "₴" }}</p>
+    <p class="mat-title">{{ product.name | uppercase }}</p>
+    <p class="mat-subheading-1">{{ product.price | currency }}</p>
   </div>
   <div class="item-count">
     <p class="mat-subheading-2">{{ count }}</p>
