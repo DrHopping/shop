@@ -38,4 +38,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Used currency pipe to format product price
 - Used uppercase pipe to format product name
 - getProuduct method returns Observable
-
+Замечаний нет
