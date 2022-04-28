@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './products/products.module';
-import { CartModule } from './cart/cart.module';
 import {
   APP_CONSTANTS,
   APP_CONSTANTS_TOKEN,
@@ -14,6 +13,8 @@ import {
 import { GENERATED_STRING, GeneratorFactory } from './core/services/generator.factory';
 import { GeneratorService } from './core/services/generator.service';
 import { LocalStorageService, LocalStorageServiceToken } from './core/services/local-storage.service';
+import { OrdersModule } from './orders/orders.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,7 @@ import { LocalStorageService, LocalStorageServiceToken } from './core/services/l
     AppRoutingModule,
     BrowserAnimationsModule,
     ProductsModule,
-    CartModule,
+    OrdersModule,
     SharedModule,
   ],
   providers: [

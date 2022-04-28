@@ -59,4 +59,8 @@ export class ProductsService {
   getProducts(): Observable<ProductModel[]> {
     return of(this.data);
   }
+
+  getProduct(id: number): Observable<ProductModel> {
+    return of(this.data.filter(p => p.id == id)[0]);
+  }
 }

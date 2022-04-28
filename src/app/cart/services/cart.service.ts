@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 import { BehaviorSubject, map, Observable } from 'rxjs';
+import { LocalStorageService, LocalStorageServiceToken } from 'src/app/core/services/local-storage.service';
 
 import { ProductModel } from 'src/app/products/models/product.model';
 import { CartModel, CartProductModel } from '../models/cart.model';
@@ -9,10 +10,17 @@ import { CartModel, CartProductModel } from '../models/cart.model';
   providedIn: 'root',
 })
 export class CartService {
+  private cartStorageKey = 'CartStorage';
   private cart: CartModel = {};
   private cartProducts = new BehaviorSubject<CartProductModel[]>([]);
 
-  constructor() {}
+  constructor(@Inject(LocalStorageServiceToken) private storage: LocalStorageService) {
+    if (!storage.isKeyExists(this.cartStorageKey)) {
+      storage.set(this.cartStorageKey, {});
+    }
+    this.cart = storage.get<CartModel>(this.cartStorageKey);
+    this.onChange();
+  }
 
   addProduct(product: ProductModel) {
     if (this.cart[product.id]) {
@@ -23,28 +31,28 @@ export class CartService {
         count: 1,
       };
     }
-    this.pushProducts();
+    this.onChange();
   }
 
   increaseQuantity(product: ProductModel, quantity: number = 1) {
     this.changeQuantity(product, quantity)
-    this.pushProducts();
+    this.onChange();
   }
 
   decreaseQuantity(product: ProductModel, quantity: number = -1) {
     this.changeQuantity(product, quantity)
-    this.pushProducts();
+    this.onChange();
   }
 
   deleteProduct(product: ProductModel) {
     if (!this.cart[product.id]) return;
     delete this.cart[product.id];
-    this.pushProducts();
+    this.onChange();
   }
 
   removeAllProducts() {
     this.cart = {};
-    this.pushProducts();
+    this.onChange();
   }
 
   getCartProducts(): CartProductModel[] {
@@ -88,7 +96,8 @@ export class CartService {
     };
   }
 
-  private pushProducts() {
+  private onChange() {
+    this.storage.set<CartModel>(this.cartStorageKey, this.cart);
     this.cartProducts.next(this.getCartProducts());
   }
 }
