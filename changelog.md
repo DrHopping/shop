@@ -39,3 +39,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Used uppercase pipe to format product name
 - getProuduct method returns Observable
 
+## [0.1.5] - 2022-04-28
+### Added
+- Admin module
+- Order module
+- Routing for Product, Admin, Cart and Order modules
+- Resolver for product
+- Guard for admin module
+- Guard for order when cart is empty
+
+### Changed
+- Cart service now uses LocalStorageService
