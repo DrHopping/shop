@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
+import { Observable } from 'rxjs';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { ProductModel } from '../../models/product.model';
-import { ProductsPromiseService } from '../../services/products-promise.service';
+import { ProductsObservableService } from '../../services/products-observable.service';
 
 @Component({
   selector: 'app-product-list',
@@ -9,7 +10,7 @@ import { ProductsPromiseService } from '../../services/products-promise.service'
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  products! : Promise<ProductModel[]>;
+  products$! : Observable<ProductModel[]>;
   sortOptions: Partial<Record<keyof ProductModel, string>> = {
     name: 'Name',
     price: 'Price',
@@ -19,12 +20,12 @@ export class ProductListComponent implements OnInit {
   isAscending: boolean = false;
 
   constructor(
-    public productService: ProductsPromiseService,
+    public productService: ProductsObservableService,
     private cartService: CartService
   ) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.products$ = this.productService.getProducts();
   }
 
   onAddProductToCart(product: ProductModel) {
