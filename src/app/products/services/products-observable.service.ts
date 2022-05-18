@@ -8,7 +8,7 @@ import { ProductModel } from '../models/product.model';
   providedIn: 'any',
 })
 export class ProductsObservableService {
-  private productsUrl = 'http://localhost:3000/products';
+  private productsUrl = 'http://localhost:3000/api/products';
 
   constructor(private http: HttpClient) {}
 
