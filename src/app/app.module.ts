@@ -15,11 +15,13 @@ import { GeneratorService } from './core/services/generator.service';
 import { LocalStorageService, LocalStorageServiceToken } from './core/services/local-storage.service';
 import { OrdersModule } from './orders/orders.module';
 import { AdminModule } from './admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ProductsModule,
