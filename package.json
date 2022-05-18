@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently --kill-others \"ng serve -o --ssl\" \"json-server --watch db\/db.json\"",
+    "start": "concurrently --kill-others \"ng serve -o --ssl\" \"json-server --watch db\/db.json --routes db\/routes.json\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
