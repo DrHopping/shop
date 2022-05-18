@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Data, Router } from '@angular/router';
-import { EMPTY, switchMap } from 'rxjs';
+import { ActivatedRoute, Data } from '@angular/router';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { ProductModel } from '../../models/product.model';
-import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-product-view',
@@ -14,9 +12,7 @@ export class ProductViewComponent implements OnInit {
   product!: ProductModel;
 
   constructor(
-    private productsService: ProductsService,
     private cartService: CartService,
-    private router: Router,
     private route: ActivatedRoute
   ) {}
 
