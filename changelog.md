@@ -50,3 +50,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Cart service now uses LocalStorageService
+
+## [0.1.6] - 2022-05-18
+### Added
+- Added json server
+- Added TimingInterceptor
+- Added app settings
+
+### Changed
+- Changed Products service to use json server and Observable
