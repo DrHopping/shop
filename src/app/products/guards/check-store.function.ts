@@ -8,7 +8,7 @@ export function checkStore(
   return productsFacade.productsLoaded$.pipe(
     tap((loaded) => {
       if (!loaded) {
-        productsFacade.getTasks();
+        productsFacade.getProducts();
       }
     }),
     filter((loaded) => loaded),

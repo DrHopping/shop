@@ -26,7 +26,7 @@ export class ProductsFacade {
     this.selectedProductByUrl$ = this.store.select(selectProductByUrl);
   }
 
-  getTasks() {
+  getProducts() {
     this.store.dispatch(ProductsActions.getProducts());
   }
 }
