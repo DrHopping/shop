@@ -53,3 +53,4 @@ import { RootStoreModule } from './store/root-store.module';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+// Замечаний нет
