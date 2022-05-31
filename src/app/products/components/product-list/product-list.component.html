@@ -3,22 +3,16 @@
     <mat-label>Select sorting option</mat-label>
     <mat-select [(value)]="selected">
       <mat-option>None</mat-option>
-      <mat-option
-        *ngFor="let option of sortOptions | keyvalue"
-        [value]="option.key"
-        >{{ option.value }}</mat-option
-      >
+      <mat-option *ngFor="let option of sortOptions | keyvalue" [value]="option.key">
+        {{ option.value }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-checkbox [(ngModel)]="isAscending">Ascending</mat-checkbox>
 </div>
 <div class="product-list">
   <app-product
-    *ngFor="
-      let product of products$
-        | async
-        | orderBy: [{ key: selected, isAsc: isAscending }]
-    "
+    *ngFor="let product of products$ | async | orderBy: [{ key: selected, isAsc: isAscending }]"
     [product]="product"
     (addProductToCart)="onAddProductToCart($event)"
   ></app-product>
