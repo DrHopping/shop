@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
+import { first } from 'rxjs';
 import { CartService } from 'src/app/cart/services/cart.service';
+import { ProductsFacade } from 'src/app/store';
 import { ProductModel } from '../../models/product.model';
 
 @Component({
@@ -12,14 +14,14 @@ export class ProductViewComponent implements OnInit {
   product!: ProductModel;
 
   constructor(
-    private cartService: CartService,
-    private route: ActivatedRoute
+    private productsFacade: ProductsFacade,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
-    this.route.data.subscribe((data: Data) => {
-      this.product = data['product'];
-    });
+    this.productsFacade.selectedProductByUrl$
+      .pipe(first())
+      .subscribe((p) => (this.product = { ...p }));
   }
 
   onBuyButtonClick() {

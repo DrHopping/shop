@@ -32,9 +32,10 @@ export const selectProductsLoaded = createSelector(
 
 export const selectProductByUrl = createSelector(
   selectProductsEntities,
-  selectRouterState,
-  (products, router): ProductModel => {
-    const productID = router.state.params['productID'];
+  selectRouteParams,
+  (products, params): ProductModel => {
+    const productID = params['productID'];
+    console.log(productID);
     return (productID ? products[productID] : {}) as ProductModel;
   }
 );

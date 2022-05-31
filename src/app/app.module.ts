@@ -10,12 +10,19 @@ import {
   APP_CONSTANTS,
   APP_CONSTANTS_TOKEN,
 } from './core/services/constant.service';
-import { GENERATED_STRING, GeneratorFactory } from './core/services/generator.factory';
+import {
+  GENERATED_STRING,
+  GeneratorFactory,
+} from './core/services/generator.factory';
 import { GeneratorService } from './core/services/generator.service';
-import { LocalStorageService, LocalStorageServiceToken } from './core/services/local-storage.service';
+import {
+  LocalStorageService,
+  LocalStorageServiceToken,
+} from './core/services/local-storage.service';
 import { OrdersModule } from './orders/orders.module';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './core/interceptors';
+import { RootStoreModule } from './store/root-store.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,13 +34,21 @@ import { httpInterceptorProviders } from './core/interceptors';
     ProductsModule,
     OrdersModule,
     SharedModule,
+    RootStoreModule,
   ],
   providers: [
     { provide: APP_CONSTANTS_TOKEN, useValue: APP_CONSTANTS },
-    { provide: GENERATED_STRING, useFactory: GeneratorFactory, deps: [GeneratorService] },
-    { provide: LocalStorageServiceToken, useValue: new LocalStorageService(window.localStorage)},
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'USD'},
-    ...httpInterceptorProviders
+    {
+      provide: GENERATED_STRING,
+      useFactory: GeneratorFactory,
+      deps: [GeneratorService],
+    },
+    {
+      provide: LocalStorageServiceToken,
+      useValue: new LocalStorageService(window.localStorage),
+    },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'USD' },
+    ...httpInterceptorProviders,
   ],
   bootstrap: [AppComponent],
 })
