@@ -30,7 +30,7 @@ export const selectProductsLoaded = createSelector(
   (state: ProductsState) => state.loaded
 );
 
-export const selectSelectedTaskByUrl = createSelector(
+export const selectProductByUrl = createSelector(
   selectProductsEntities,
   selectRouterState,
   (products, router): ProductModel => {
