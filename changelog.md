@@ -86,3 +86,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Router store
 - Used @ngrx/entity
 - Used facade pattern
+OK
